@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cadastro de Cliente</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: #ffffff;
+        padding: 20px 24px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 720px;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 6px;
+        color: #333;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccd6e3;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+        background: #fff;
+      }
+      .full {
+        grid-column: 1 / -1;
+      }
+      .actions {
+        text-align: right;
+        margin-top: 14px;
+      }
+      button {
+        background: #2b78e4;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      small {
+        color: #666;
+        display: block;
+        margin-top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Formulário de Cadastro de Cliente</h1>
+
+      <form id="form-cadastro" action="#" method="post" novalidate>
+        <div class="grid">
+          <div class="full">
+            <label for="nome">Nome completo *</label>
+            <input
+              id="nome"
+              name="nome"
+              type="text"
+              placeholder="Ex: Maria Silva"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="email">E-mail *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="exemplo@dominio.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="telefone">Telefone *</label>
+            <input
+              id="telefone"
+              name="telefone"
+              type="tel"
+              placeholder="(11) 91234-5678"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="nascimento">Data de nascimento</label>
+            <input id="nascimento" name="nascimento" type="date" />
+          </div>
+
+          <div>
+            <label for="cpf">CPF *</label>
+            <input
+              id="cpf"
+              name="cpf"
+              type="text"
+              placeholder="000.000.000-00"
+              pattern="[\d\.\-]{11,15}"
+              required
+            />
+            <small>Formato sugerido: 000.000.000-00</small>
+          </div>
+
+          <div>
+            <label for="cep">CEP *</label>
+            <input
+              id="cep"
+              name="cep"
+              type="text"
+              placeholder="00000-000"
+              pattern="\d{5}-?\d{3}"
+              required
+            />
+          </div>
+
+          <div class="full">
+            <label for="endereco">Endereço *</label>
+            <input
+              id="endereco"
+              name="endereco"
+              type="text"
+              placeholder="Rua, Av. — número, complemento"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="cidade">Cidade *</label>
+            <input
+              id="cidade"
+              name="cidade"
+              type="text"
+              placeholder="São Paulo"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="estado">Estado *</label>
+            <select id="estado" name="estado" required>
+              <option value="">Selecione...</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MT">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="observacoes">Observações (campo opcional)</label>
+            <input
+              id="observacoes"
+              name="observacoes"
+              type="text"
+              placeholder="Ex: preferências, observações"
+            />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Quando o formulário for enviado
+      document
+        .getElementById("form-cadastro")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // impede o envio real
+
+          alert("Cadastro realizado com sucesso!");
+
+          // Limpa todos os campos
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
